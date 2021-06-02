@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <climits>
 
 typedef struct cell cell;
 
@@ -94,7 +95,7 @@ void Sudoku::print_sudoku() {
 }
 
 void Sudoku::string_to_board(std::string& str) {
-	for (int i = 0; i < str.length(); i++)
+	for (unsigned long int i = 0; i < str.length(); i++)
 		if (str[i] != '.' and str[i] != '-' and str[i] != '0')
 			board[i] = str[i] - '0';
 		else
@@ -120,7 +121,7 @@ void Sudoku::process_dlx(int solutions, std::vector<cell*> s) {
 		x.push_back(c->ID);
 	}
 	std::sort(x.begin(), x.end());
-	for (int i = 0; i < x.size(); i++) {
+	for (unsigned long int i = 0; i < x.size(); i++) {
 		board[i] = x[i] % 9 + 1;
 	}
 	if (solutions > 1) std::cout << "More than one solution found" << std::endl;
